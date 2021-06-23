@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title%}
+
+{% block content %}
+<br>
+<div class="ui sixteen column centered grid" style="background-color: #396afc;">
+    <div class="row">
+        <div class="">
+            <h1 style="text-align: center; color: aliceblue;">Welcome To FriendsBook</h1><br><br>
+            <img src="{% static 'relatedimg.png' %}"><br><br><br>
+            <button class="big ui green button">
+                <a href="{% url 'register' %}" style="color: aliceblue;">Get Started ></a>
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

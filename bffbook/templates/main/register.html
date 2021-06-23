@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Register
+{% endblock title %}
+
+{% block content %}
+
+<div class="header-bar">
+    <h1>Register</h1>
+</div>
+
+<div class="ui grid">
+    <div class="six wide column">
+        <div class="ui register form">
+            <form method="POST">
+                {% csrf_token %}
+                <label>{{form.username.label}}</label>
+                {{form.username}}
+
+                <label>{{form.password1.label}}</label>
+                {{form.password1}}
+
+                <label>{{form.password2.label}}</label>
+                {{form.password2}}
+                <input style="margin-top:10px ;" class="ui green button" type="submit" value="Register">
+            </form>
+            <p>{{form.errors}}</p>
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

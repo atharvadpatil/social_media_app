@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+invite friends
+{% endblock title %}
+
+
+{% block content %}
+    {% if is_empty %}
+    <h1 class="ui red message">No Friends</h1>
+    {% endif %}
+    
+    
+    {% for obj in qs %}
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="three wide column">
+                    <img class="ui small circular image" src={{obj.avatar.url}}>
+                </div>
+                <div class="thirteen wide column">
+                    <h3>{{obj.user}}</h3>
+                    <p>{{obj.bio}}</p>
+                    <a href="{{obj.get_absolute_url}}"><button class="ui primary button mb-5 w-big">See profile</button></a>
+                    <br>
+                    <form action="{% url 'profiles:remove-friend' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="profile_pk" value={{obj.pk}}>
+                        <button type="submit" class="ui negative basic button mb-5 w-big"><i class="minus square icon"></i>Remove from friends</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
